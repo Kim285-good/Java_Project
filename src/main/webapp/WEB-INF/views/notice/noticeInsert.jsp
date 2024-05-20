@@ -33,6 +33,14 @@
 </body>
 </html>
 <script>
+    function noticeListMove() {
+        // 게시판 목록 페이지 URL
+        var listUrl = '/notice'; // 적절한 URL로 변경하세요
+
+        // 페이지 이동
+        location.href = listUrl;
+    }
+
 
     const insertNotice = () => {
 
