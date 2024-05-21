@@ -51,6 +51,11 @@
         .login-container input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -58,13 +63,22 @@
 <div class="login-container">
     <h2>Login</h2>
     <form action="/member/login" method="post">
+        <div id="error-message" class="error-message" style="display: none;">Wrong Email or password</div>
         <label for="email">Email:</label>
-        <input type="text" id="email" name="memberEmail">
+        <input type="text" id="email" name="memberEmail" placeholder="Enter your email">
         <label for="password">Password:</label>
-        <input type="password" id="password" name="memberPassword">
+        <input type="password" id="password" name="memberPassword" placeholder="Enter your password">
         <input type="submit" value="Sign In">
     </form>
 </div>
+
+<script>
+    // URLSearchParams를 사용하여 URL 쿼리 파라미터를 확인합니다.
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('error')) {
+        document.getElementById('error-message').style.display = 'block';
+    }
+</script>
 
 </body>
 </html>

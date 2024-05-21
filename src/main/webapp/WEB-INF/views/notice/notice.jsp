@@ -35,13 +35,19 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 10px 0;
+            margin: 10px 5px;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
         .btn:hover {
             background-color: #45a049;
+        }
+        .btn-logout {
+            background-color: #f44336;
+        }
+        .btn-logout:hover {
+            background-color: #e53935;
         }
         table {
             width: 100%;
@@ -70,9 +76,10 @@
 </head>
 <body>
 <div class="container">
-    <h1>게시판 목록</h1>
+    <h1>게시판에 오신 것을 환영합니다.</h1>
     <div>
         <button type="button" class="btn" onclick="insertNoticeMove();">등록</button>
+        <button type="button" class="btn btn-logout" onclick="logout();">로그아웃</button>
     </div>
     <table>
         <tr>
@@ -101,6 +108,11 @@
 
     // 등록화면 이동
     function insertNoticeMove() {
-        location.href = "0ew";
+        location.href = "notice/insert-view";
+    }
+
+    // 로그아웃
+    function logout() {
+        location.href = "login";
     }
 </script>

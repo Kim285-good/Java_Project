@@ -41,10 +41,16 @@ public class MemberController {
         if (loginResult != null) {
             // 로그인 성공
             session.setAttribute("loginEmail", loginResult.getMemberEmail());
-            return "main";
+            return "redirect:/notice";
         } else {
             // 로그인 실패
-            return "login";
+            return "redirect:/member/login?error=true";
         }
+    }
+
+    @GetMapping("member/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "login";
     }
 }
