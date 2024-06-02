@@ -11,6 +11,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+
             margin: 0;
         }
         .login-container {
@@ -18,7 +19,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 300px;
+            width: 450px;
         }
         .login-container h2 {
             margin-top: 0;
@@ -32,7 +33,7 @@
         }
         .login-container input[type="text"],
         .login-container input[type="password"] {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -45,7 +46,7 @@
             border: none;
             border-radius: 5px;
             color: white;
-            font-size: 16px;
+            font-size: 20px;
             cursor: pointer;
         }
         .login-container input[type="submit"]:hover {
@@ -69,6 +70,9 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="memberPassword" placeholder="Enter your password">
         <input type="submit" value="Sign In">
+        <button value="Sign Up">
+            <a href="/member/save" style="width: 30%"></a>
+        </button>
     </form>
 </div>
 

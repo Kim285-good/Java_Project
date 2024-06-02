@@ -14,5 +14,4 @@ public class NoticeRequest {
     private String createId;
     private String createAt;
     private String updateAt;
-
 }

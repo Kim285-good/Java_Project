@@ -65,6 +65,34 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
+        .del-btn {
+            background-color: #c63e3e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .list-btn {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
         .btn:hover {
             background-color: #45a049;
         }
@@ -95,9 +123,9 @@
         </tr>
     </table>
     <div class="button-container">
-        <button type="button" class="btn" onclick="deleteNotice();">삭제</button>
+        <button type="button" class="del-btn" onclick="deleteNotice();">삭제</button>
         <button type="button" class="btn" onclick="updateNotice();">수정</button>
-        <button type="button" class="btn" onclick="noticeListMove();">목록</button>
+        <button type="button" class="list-btn" onclick="noticeListMove();">목록</button>
     </div>
 </div>
 
