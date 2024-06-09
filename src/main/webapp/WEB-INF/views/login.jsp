@@ -70,8 +70,6 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="memberPassword" placeholder="Enter your password">
         <input type="submit" value="Sign In">
-        <button value="Sign Up">
-            <a href="/member/save" style="width: 30%"></a>
         </button>
     </form>
 </div>

@@ -1,11 +1,10 @@
 package com.example.springbasic.member.service;
 
-
 import com.example.springbasic.member.dto.MemberDTO;
 import com.example.springbasic.member.entity.MemberEntity;
 import com.example.springbasic.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,33 +13,29 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+
     public void save(MemberDTO memberDTO) {
+        // 비밀번호 해시 처리
+        String hashedPassword = BCrypt.hashpw(memberDTO.getMemberPassword(), BCrypt.gensalt());
+        memberDTO.setMemberPassword(hashedPassword); // 암호화된 비밀번호로 설정
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         memberRepository.save(memberEntity);
     }
 
     public MemberDTO login(MemberDTO memberDTO) {
-        /*
-           1. 회원이 입력한 이메일로 디비에서 조회를 함
-           2. 디비에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치하는지 판단
-        */
         Optional<MemberEntity> byEmail = memberRepository.findByEmail(memberDTO.getMemberEmail());
         if (byEmail.isPresent()) {
-            // 조회 결과가 있다(해당 이메일을 가진 회원 정보가 있다)
             MemberEntity memberEntity = byEmail.get();
-            if (memberEntity.getPassword().equals(memberDTO.getMemberPassword())) {
+            if (BCrypt.checkpw(memberDTO.getMemberPassword(), memberEntity.getPassword())) {
                 // 비밀번호 일치
-                // entity -> dto 변환 후 리턴
-                MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
-                return dto;
+                return MemberDTO.toMemberDTO(memberEntity);
             } else {
-                // 비밀번호 불일치(로그인 실패)
+                // 비밀번호 불일치
                 return null;
             }
         } else {
-            //조회 결과가 없다(로그인 실패)
+            // 조회 결과 없음
             return null;
         }
     }
-
 }
